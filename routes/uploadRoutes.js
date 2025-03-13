@@ -1,7 +1,20 @@
-import express from 'express'
-import {uploadFile} from '../controllers/uploadController.js'
-const router = express.Router()
+import express from "express";
+import multer from "multer";
+import { uploadFile } from "../controllers/uploadController.js";
 
-router.post('/upload' , uploadFile)
 
-export default router
+const storage  =  multer.diskStorage({
+    destination: function(req,file,cb){
+        return cb(null , './uploads')
+    },
+    filename: function(req,file,cb){
+        return cb(null , `${Date.now()}-${file.originalname}`)
+    }
+})
+
+const upload = multer({ storage:storage})
+const router = express.Router();
+
+router.post("/upload", upload.single("csv"), uploadFile);
+
+export default router;
