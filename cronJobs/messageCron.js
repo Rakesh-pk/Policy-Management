@@ -28,7 +28,6 @@ cron.schedule("* * * * *", async () => {
   } else {
     console.log('No messages found for this schedule.');
   }
-  console.log(messages)
 
 
 });
