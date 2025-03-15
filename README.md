@@ -42,7 +42,9 @@ The API will be available at `http://localhost:5000`.
 http://localhost:5000/api/upload
 ```
 
-
+upload file via API body --> form-data. after that  
+key : csv AND
+value : "select file from local"
 
 ---
 
