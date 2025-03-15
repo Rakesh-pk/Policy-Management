@@ -135,7 +135,7 @@ http://localhost:5000/api/messages/schedule
 
 ## 📌 Author
 👨‍💻 Rakesh Kumbar  
-📧 rakeshkumbar520@gmail.com.com  
+📧 rakeshkumbar520@gmail.com
 
 ---
 
