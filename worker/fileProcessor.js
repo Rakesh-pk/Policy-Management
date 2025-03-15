@@ -33,9 +33,12 @@ const processFile = async (filePath) => {
 
 
     for (const row of records) {
-        let agent_collection_data = {name:row.agent }
-        let LOB_collection_data = {categoryName:row.category_name }
-        let policy_carrier_collection_data = { companyName: row.company_name}
+        // let agent_collection_data = {name:row.agent }
+        // let LOB_collection_data = {categoryName:row.category_name }
+        // let policy_carrier_collection_data = { companyName: row.company_name}
+        if (Object.values(row).every(value => value == "")) {
+            continue; // Skip this iteration
+        }
         let user_collection_data = { firstName : row.firstname,
                                     DOB: row.DOB,
                                     address: row.address,
@@ -47,9 +50,25 @@ const processFile = async (filePath) => {
                                     userType: row.userType,}
         // let users_account_collection_data = {accountName:row.account_name}
 
-        let agent  = await Agent.create(agent_collection_data)
-        let lob  = await LOB.create(LOB_collection_data)
-        let policyCarrier  = await Carrier.create(policy_carrier_collection_data)
+        // let agent  = await Agent.create(agent_collection_data)
+        const agent = await Agent.findOneAndUpdate(
+            {name:row.agent },
+            {name:row.agent },
+            { upsert: true, new: true } 
+          );
+
+        // let lob  = await LOB.create(LOB_collection_data)
+        const lob = await LOB.findOneAndUpdate(
+            {categoryName:row.category_name }, 
+            {categoryName:row.category_name }, 
+            { upsert: true, new: true }
+          );
+        // let policyCarrier  = await Carrier.create(policy_carrier_collection_data)
+        let policyCarrier  = await Carrier.findOneAndUpdate(
+            { companyName: row.company_name}, 
+            { companyName: row.company_name}, 
+            { upsert: true, new: true } 
+        )
         let user  = await User.create(user_collection_data)
         
 

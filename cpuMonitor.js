@@ -1,8 +1,8 @@
 import os from "os";
 import { exec } from "child_process";
 
-const CHECK_INTERVAL = 10000; // Check every 5 seconds
-const CPU_THRESHOLD = 90; // Restart server if CPU exceeds 70
+const CHECK_INTERVAL = 10000; 
+const CPU_THRESHOLD = 70; // Restart server if CPU exceeds 70
 
 const getCPUUsage = () => {
   const cpus = os.cpus();
