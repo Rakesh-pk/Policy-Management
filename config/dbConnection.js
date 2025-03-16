@@ -6,7 +6,7 @@ dotenv.config()
 const connectDB = async ()=>{
     
     try {
-        await mongoose.connect(process.env.MONGO_URI ||  'mongodb://localhost:27017/Policy-Mgmt')
+        await mongoose.connect(process.env.MONGO_URI)
         console.log('Connected to Mongodb')
     } catch (error) {
         console.log('Failed to Connect MongoDB database')
