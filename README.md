@@ -118,8 +118,8 @@ http://localhost:5000/api/messages/schedule
 ```json
 {
   "message": "Reminder: Your policy is due for renewal!",
-  "day": "13-03-2025",
-  "time": "14:00"
+  "scheduledDay": "13-03-2025",
+  "scheduledTime": "14:00"
 }
 ```
 
